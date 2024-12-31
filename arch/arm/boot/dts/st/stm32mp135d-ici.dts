@@ -22,7 +22,7 @@
 	compatible = "st,stm32mp135d-ici", "st,stm32mp135";
 
 	aliases {
-		ethernet0 = &eth1;
+		ethernet0 = &ethernet1;
 		serial0 = &uart4;
 		serial1 = &usart2;
 		serial2 = &usart3;
@@ -209,14 +209,14 @@
 	status = "okay";
 };
 
-&eth1 {
+&ethernet1 {
 	status = "okay";
-	pinctrl-0 = <&eth1_rmii_pins_a>;
-	pinctrl-1 = <&eth1_rmii_sleep_pins_a>;
+	pinctrl-0 = <&ethernet1_rmii_pins_a>;
+	pinctrl-1 = <&ethernet1_rmii_sleep_pins_a>;
 	pinctrl-names = "default", "sleep";
 	phy-mode = "rmii";
 	max-speed = <100>;
-	phy-handle = <&phy0_eth1>;
+	phy-handle = <&phy0_ethernet1>;
 	nvmem-cells = <&ethernet_mac1_address>;
 	nvmem-cell-names = "mac-address";
 
@@ -224,7 +224,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "snps,dwmac-mdio";
-		phy0_eth1: ethernet-phy@1 {
+		phy0_ethernet1: ethernet-phy@1 {
 			compatible = "ethernet-phy-ieee802.3-c22";
 			reset-gpios =  <&gpioa 6 GPIO_ACTIVE_LOW>;
 			reg = <1>;

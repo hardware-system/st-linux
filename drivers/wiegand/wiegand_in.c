@@ -246,7 +246,7 @@ static struct wiegand_in_platform_data *
 
 	wg_printk("major =%d\n", MAJOR(gl_dev));
 
-	wg_drv_class = class_create(THIS_MODULE, DEV_NAME_WG);
+	wg_drv_class = class_create(DEV_NAME_WG);
 	if (IS_ERR(wg_drv_class)) {
 		pr_err("Failed to create class\n");
 		ret = PTR_ERR(wg_drv_class);
