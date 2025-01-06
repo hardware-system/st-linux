@@ -71,6 +71,9 @@ modules.order
 /modules.builtin.modinfo
 /modules.nsdeps
 
+build/
+deploy
+
 #
 # RPM spec file (make rpm-pkg)
 #
