@@ -19,7 +19,7 @@
 		};
 	};
 
-	ethernet1_rmii_pins_a: ethernet1-rmii-1 {
+	eth1_rmii_pins_a: eth1-rmii-1 {
 		pins1 {
 			pinmux = <STM32_PINMUX('A', 11, AF11)>, /* ETH1_CLK */
 					 <STM32_PINMUX('B', 11, AF11)>, /* ETH1_TX_EN */
@@ -45,7 +45,7 @@
 		};
 	};
 
-	ethernet1_rmii_sleep_pins_a: ethernet1-rmii-sleep-1 {
+	eth1_rmii_sleep_pins_a: eth1-rmii-sleep-1 {
 		pins {
 			pinmux = <STM32_PINMUX('A', 7, ANALOG)>, /* ETH1_CRS_DV */
 					 <STM32_PINMUX('A', 11, ANALOG)>, /* ETH1_CLK */

@@ -1,12 +1,9 @@
 #!/bin/bash
 
-source /opt/st/stm32mp1/4.2.1-openstlinux-6.1-yocto-mickledore-mp1-v23.06.21/environment-setup-cortexa7t2hf-neon-vfpv4-ostl-linux-gnueabi
+source /opt/st/stm32mp1/5.0.3-openstlinux-6.6-yocto-scarthgap-mpu-v24.11.06/environment-setup
 
 BUILD_DIR="$PWD/build"
 DEPLOY_DIR="$PWD/deploy"
-
-BUILD_DTS="$BUILD_DIR/arch/arm/boot/dts/stm32mp135d-ici.dtb"
-BUILD_IMG="$BUILD_DIR/arch/arm/boot/uImage"
 
 set -e
 #set -x
@@ -48,6 +45,7 @@ cp $BUILD_DIR/arch/arm/boot/uImage "$DEPLOY_DIR"
 #拷贝所有编译的设备树文件到当前的../build目录下
 cp $BUILD_DIR/arch/arm/boot/dts/st/stm32mp135d-ici.dtb "$DEPLOY_DIR"
 cp $BUILD_DIR/arch/arm/boot/dts/st/stm32mp131d-ici.dtb "$DEPLOY_DIR"
+cp $BUILD_DIR/arch/arm/boot/dts/st/stm32mp135d-ici-fgc1k.dtb "$DEPLOY_DIR"
 
 if [[ -d $DEPLOY_DIR/6.6.48 ]];
 then
