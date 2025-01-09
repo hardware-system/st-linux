@@ -31,6 +31,7 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	stm32mp135f-dk.dtb \
 	stm32mp131d-ici.dtb \
 	stm32mp135d-ici.dtb \
+	stm32mp135d-ici-fgc1k.dtb \
 	stm32mp135f-dk-a7-examples.dtb \
 	stm32mp151a-prtt1a.dtb \
 	stm32mp151a-prtt1c.dtb \
