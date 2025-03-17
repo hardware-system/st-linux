@@ -278,6 +278,20 @@
 	status = "okay";
 };
 
+&spi5 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&spi5_pins_a>;
+	pinctrl-1 = <&spi5_sleep_pins_a>;
+	status = "okay";
+	// cs-gpios= <&gpioi 1 0>;
+
+	spidev@0{
+        compatible = "rohm,dh2228fv";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+    };
+};
+
 &timers4 {
 	/delete-property/dmas;
 	/delete-property/dma-names;
@@ -341,15 +355,6 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart7_pins_a>;
     uart-has-rtscts;
-	/delete-property/dmas;
-	/delete-property/dma-names;
-	status = "okay";
-};
-
-&m_can1 {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&m_can1_pins_a>;
-	pinctrl-1 = <&m_can1_sleep_pins_a>;
 	/delete-property/dmas;
 	/delete-property/dma-names;
 	status = "okay";
