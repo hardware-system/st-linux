@@ -138,6 +138,24 @@ bool of_mdiobus_child_is_phy(struct device_node *child)
 }
 EXPORT_SYMBOL(of_mdiobus_child_is_phy);
 
+
+int try_get_motorcomm_phy_addr(struct mii_bus *mdio, struct device_node* child)
+{
+	int rc;
+
+	for(int addr = 0; addr < PHY_MAX_ADDR; addr++)
+	{
+		if (of_mdiobus_child_is_phy(child))
+			rc = of_mdiobus_register_phy(mdio, child, addr);
+		else
+			rc = of_mdiobus_register_device(mdio, child, addr);
+
+		if (rc != -ENODEV)
+			return rc;
+	}
+
+	return rc;
+}
 /**
  * __of_mdiobus_register - Register mii_bus and create PHYs from the device tree
  * @mdio: pointer to mii_bus structure
@@ -190,6 +208,9 @@ int __of_mdiobus_register(struct mii_bus *mdio, struct device_node *np,
 			rc = of_mdiobus_register_phy(mdio, child, addr);
 		else
 			rc = of_mdiobus_register_device(mdio, child, addr);
+
+		if (rc == -ENODEV)
+			try_get_motorcomm_phy_addr(mdio,child);
 
 		if (rc == -ENODEV)
 			dev_err(&mdio->dev,

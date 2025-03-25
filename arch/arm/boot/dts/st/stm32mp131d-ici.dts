@@ -228,7 +228,7 @@
 		phy0_eth1: ethernet-phy@1 {
 			compatible = "ethernet-phy-ieee802.3-c22";
 			reset-gpios =  <&gpioa 6 GPIO_ACTIVE_LOW>;
-			reset-assert-us = <1000>;
+			reset-assert-us = <3000>;
 			reset-deassert-us = <30000>;
 			reg = <1>;
 			wakeup-source;
