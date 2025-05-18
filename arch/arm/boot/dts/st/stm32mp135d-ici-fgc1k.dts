@@ -24,6 +24,8 @@
 	aliases {
 		ethernet0 = &ethernet1;
 		serial0 = &uart4;
+		serial1 = &uart7;
+		serial2 = &uart8;
 	};
 
 	chosen {
@@ -218,6 +220,24 @@
 	status = "okay";
 };
 
+&uart7 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart7_pins_a>;
+	uart-has-rtscts;
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	status = "okay";
+};
+
+&uart8 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart8_pins_a>;
+	uart-has-rtscts;
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	status = "okay";
+};
+
 &m_can1 {
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&m_can1_pins_a>;
@@ -296,4 +316,85 @@
 	st,enable-hs-rx-gain-eq;
 	st,no-hs-ftime-ctrl;
 	st,no-lsfs-sc;
+};
+
+&pinctrl {
+		uart7_pins_a: uart7-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('F', 7, AF7)>, /* UART7_TX */
+				<STM32_PINMUX('F', 10, AF8)>; /* UART7_RTS */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+
+		pins2 {
+			pinmux = <STM32_PINMUX('F', 6, AF7)>; /* UART7_RX */
+			bias-disable;
+		};
+	};
+
+	uart7_idle_pins_a: uart7-idle-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('F', 7, ANALOG)>; /* UART7_TX */
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('F', 10, AF8)>; /* UART7_RTS */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+		pins3 {
+			pinmux = <STM32_PINMUX('F', 6, AF7)>; /* UART7_RX */
+			bias-disable;
+		};
+	};
+
+	uart7_sleep_pins_a: uart7-sleep-0 {
+		pins {
+			pinmux = <STM32_PINMUX('F', 7, ANALOG)>, /* UART7_TX */
+				<STM32_PINMUX('F', 10, ANALOG)>, /* UART7_RTS */
+				<STM32_PINMUX('F', 6, ANALOG)>; /* UART7_RX */
+		};
+	};
+
+	uart8_pins_a: uart8-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('E', 1, AF8)>, /* UART8_TX */
+			    <STM32_PINMUX('E', 14, AF8)>; /* UART8_RTS */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+
+		pins2 {
+			pinmux = <STM32_PINMUX('E', 0, AF8)>; /* UART8_RX */
+
+			bias-disable;
+		};
+	};
+
+	uart8_idle_pins_a: uart8-idle-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('E', 1, ANALOG)>; /* UART8_TX */
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('F', 10, AF8)>; /* UART8_RTS */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+		pins3 {
+			pinmux = <STM32_PINMUX('E', 10, AF7)>; /* UART8_RX */
+			bias-disable;
+		};
+	};
+
+	uart8_sleep_pins_a: uart8-sleep-0 {
+		pins {
+			pinmux = <STM32_PINMUX('E', 8, ANALOG)>, /* UART8_TX */
+			    <STM32_PINMUX('F', 10, ANALOG)>, /* UART8_RTS */
+				<STM32_PINMUX('E', 10, ANALOG)>; /* UART8_RX */
+		};
+	};
 };
