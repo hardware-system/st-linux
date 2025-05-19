@@ -30,6 +30,7 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	stm32h750i-art-pi.dtb \
 	stm32mp135f-dk.dtb \
 	stm32mp131d-ici.dtb \
+	stm32mp131d-ici-256M.dtb \
 	stm32mp135d-ici.dtb \
 	stm32mp135d-ici-fgc1k.dtb \
 	stm32mp135d-ici-tbox.dtb \
