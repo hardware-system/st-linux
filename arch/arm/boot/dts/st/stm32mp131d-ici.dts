@@ -283,7 +283,7 @@
 	pinctrl-0 = <&spi5_pins_a>;
 	pinctrl-1 = <&spi5_sleep_pins_a>;
 	status = "okay";
-	// cs-gpios= <&gpioi 1 0>;
+	cs-gpios= <&gpioi 1 0>;
 
 	spidev@0{
         compatible = "rohm,dh2228fv";
