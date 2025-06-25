@@ -36,9 +36,12 @@
 #define MAX_WG_DATA_BITS 64
 
 // 检验韦根数据有效性
-#define MIN_PULSE_WIDTH 50
-#define MAX_PULSE_WIDTH 500
-#define FRAME_END_DELAY msecs_to_jiffies(2)
+#define MIN_PULSE_WIDTH 5
+#define MAX_PULSE_WIDTH 1000
+#define FRAME_END_DELAY msecs_to_jiffies(3)
+
+#define DRIVER_VERSION "2.0"
+//#define WGDEBUG
 
 #ifdef WGDEBUG
 #define wg_printk(fmt, args...) printk("\nwiegand:" fmt,## args)
@@ -59,14 +62,14 @@ DECLARE_WAIT_QUEUE_HEAD(wg_waitq);
 static bool check_pulse_valid(struct timespec64 falling_time) 
 {
 	struct timespec64 rising_time;
-	long long pulse_time;
+	unsigned long long pulse_time;
 
-	wg_printk("%s \n", __func__);
+	//wg_printk("%s \n", __func__);
 	ktime_get_real_ts64(&rising_time);
 	pulse_time = (rising_time.tv_sec - falling_time.tv_sec) * 1000000LL +
 				 (rising_time.tv_nsec - falling_time.tv_nsec) / 1000;
 
-	wg_printk("pulse_time: %d \n", pulse_time);
+	//printk("pulse_time: %lluus  rs:%llu  fs:%llu  rns:%llu ns  fns:%llu \n", pulse_time, rising_time.tv_sec, falling_time.tv_sec, timespec64_to_ns(&rising_time), timespec64_to_ns(&falling_time);
 	return (pulse_time >= MIN_PULSE_WIDTH && pulse_time <= MAX_PULSE_WIDTH);
 }
 
@@ -92,6 +95,7 @@ static irqreturn_t wiegand_data_interrupt(int irq, void *dev_id)
 		wiegand_ch->data_bits++;
 	} else {
 		ktime_get_real_ts64(&wiegand_ch->falling_time[index]);
+		//printk("index: %d, falling_time_to_ns: %llu\n", index, wiegand_ch->falling_time[inden].tv_nsec);
 	}
 
 	mod_timer(&wiegand_ch->frame_end_timer, jiffies + FRAME_END_DELAY);
@@ -465,9 +469,16 @@ static struct platform_driver wiegand_in_device_driver =
 	}
 };
 
+static void wiegand_show_version_info(void)
+{
+    printk(KERN_INFO "Wiegand Driver Version: %s\n", DRIVER_VERSION);
+}
+
 static int __init wiegand_in_init(void) 
 {
 	int ret = 0;
+
+	wiegand_show_version_info();
 
 	ret = platform_driver_register(&wiegand_in_device_driver);
 	if (ret) {
