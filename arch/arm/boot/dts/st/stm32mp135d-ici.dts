@@ -97,11 +97,11 @@
 		poll-interval = <50>;  // 定义轮询间隔，单位为毫秒
 
 		key0 {
-            label = "GPIO Key 0";
-            linux,code = <KEY_0>;
-            gpios = <&gpiof 6 GPIO_ACTIVE_LOW>;
-            debounce-interval = <2>;  // 消抖时间
-        };
+			label = "GPIO Key 0";
+			linux,code = <KEY_0>;
+			gpios = <&gpiof 6 GPIO_ACTIVE_LOW>;
+			debounce-interval = <2>;  // 消抖时间
+		};
 	};
 
 	input1 {
@@ -109,11 +109,11 @@
 		poll-interval = <50>;
 
 		key1 {
-            label = "GPIO Key 1";
-            linux,code = <KEY_1>;
-            gpios = <&gpiof 7 GPIO_ACTIVE_LOW>;
-            debounce-interval = <2>;
-        };
+			label = "GPIO Key 1";
+			linux,code = <KEY_1>;
+			gpios = <&gpiof 7 GPIO_ACTIVE_LOW>;
+			debounce-interval = <2>;
+		};
 	};
 
 	input2 {
@@ -121,11 +121,11 @@
 		poll-interval = <50>;
 
 		key2 {
-            label = "GPIO Key 2";
-            linux,code = <KEY_2>;
-            gpios = <&gpioe 6 GPIO_ACTIVE_LOW>;
-            debounce-interval = <2>;
-        };
+			label = "GPIO Key 2";
+			linux,code = <KEY_2>;
+			gpios = <&gpioe 6 GPIO_ACTIVE_LOW>;
+			debounce-interval = <2>;
+		};
 	};
 
 	input3 {
@@ -133,11 +133,11 @@
 		poll-interval = <50>;
 
 		key3 {
-            label = "GPIO Key 3";
-            linux,code = <KEY_3>;
-            gpios = <&gpiog 1 GPIO_ACTIVE_LOW>;
-            debounce-interval = <2>;
-        };
+			label = "GPIO Key 3";
+			linux,code = <KEY_3>;
+			gpios = <&gpiog 1 GPIO_ACTIVE_LOW>;
+			debounce-interval = <2>;
+		};
 	};
 
 	// power-loss-detector {
@@ -148,12 +148,12 @@
 	// };
 
 	vddcore: vddcore {
-        compatible = "regulator-fixed";
-        regulator-name = "vddcore";
-        regulator-min-microvolt = <1250000>;
-        regulator-max-microvolt = <1250000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
+		compatible = "regulator-fixed";
+		regulator-name = "vddcore";
+		regulator-min-microvolt = <1250000>;
+		regulator-max-microvolt = <1250000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
 	};
 
 	vddcpu: vddcpu {
@@ -161,45 +161,45 @@
 		regulator-name = "vddcpu";
 		regulator-min-microvolt = <1350000>;
 		regulator-max-microvolt = <1350000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
+		regulator-off-in-suspend;
+		regulator-always-on;
 	};
 
 	v3v3: v3v3 {
-        compatible = "regulator-fixed";
-        regulator-name = "v3v3";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "v3v3";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 
 	vbus_otg: vbus_otg {
-        compatible = "regulator-fixed";
-        regulator-name = "vbus_otg";
-        regulator-min-microvolt = <5000000>;
-        regulator-max-microvolt = <5000000>;
-        regulator-off-in-suspend;
+		compatible = "regulator-fixed";
+		regulator-name = "vbus_otg";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-off-in-suspend;
 		regulator-always-on;
-    };
+	};
 
 	vdd: vdd {
-        compatible = "regulator-fixed";
-        regulator-name = "vdd";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "vdd";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 
 	vdd_usb: vdd_usb {
-        compatible = "regulator-fixed";
-        regulator-name = "vdd_usb";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "vdd_usb";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 };
 &crc1 {
 	status = "okay";
@@ -322,7 +322,7 @@
 &uart5 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart5_pins_a>;
-    uart-has-rtscts;
+	uart-has-rtscts;
 	/delete-property/dmas;
 	/delete-property/dma-names;
 	status = "okay";
@@ -331,7 +331,7 @@
 &usart6 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&usart6_pins_a>;
-    uart-has-rtscts;
+	uart-has-rtscts;
 	/delete-property/dmas;
 	/delete-property/dma-names;
 	status = "okay";
@@ -340,7 +340,7 @@
 &uart7 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart7_pins_a>;
-    uart-has-rtscts;
+	uart-has-rtscts;
 	/delete-property/dmas;
 	/delete-property/dma-names;
 	status = "okay";

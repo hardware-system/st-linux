@@ -64,12 +64,12 @@
 	};
 
 	vddcore: vddcore {
-        compatible = "regulator-fixed";
-        regulator-name = "vddcore";
-        regulator-min-microvolt = <1250000>;
-        regulator-max-microvolt = <1250000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
+		compatible = "regulator-fixed";
+		regulator-name = "vddcore";
+		regulator-min-microvolt = <1250000>;
+		regulator-max-microvolt = <1250000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
 	};
 
 	vddcpu: vddcpu {
@@ -77,45 +77,45 @@
 		regulator-name = "vddcpu";
 		regulator-min-microvolt = <1350000>;
 		regulator-max-microvolt = <1350000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
+		regulator-off-in-suspend;
+		regulator-always-on;
 	};
 
 	v3v3: v3v3 {
-        compatible = "regulator-fixed";
-        regulator-name = "v3v3";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "v3v3";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 
 	vbus_otg: vbus_otg {
-        compatible = "regulator-fixed";
-        regulator-name = "vbus_otg";
-        regulator-min-microvolt = <5000000>;
-        regulator-max-microvolt = <5000000>;
-        regulator-off-in-suspend;
+		compatible = "regulator-fixed";
+		regulator-name = "vbus_otg";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-off-in-suspend;
 		regulator-always-on;
-    };
+	};
 
 	vdd: vdd {
-        compatible = "regulator-fixed";
-        regulator-name = "vdd";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "vdd";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 
 	vdd_usb: vdd_usb {
-        compatible = "regulator-fixed";
-        regulator-name = "vdd_usb";
-        regulator-min-microvolt = <3300000>;
-        regulator-max-microvolt = <3300000>;
-        regulator-off-in-suspend;
-        regulator-always-on;
-    };
+		compatible = "regulator-fixed";
+		regulator-name = "vdd_usb";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-off-in-suspend;
+		regulator-always-on;
+	};
 };
 
 &crc1 {
@@ -361,7 +361,7 @@
 	uart8_pins_a: uart8-0 {
 		pins1 {
 			pinmux = <STM32_PINMUX('E', 1, AF8)>, /* UART8_TX */
-			    <STM32_PINMUX('E', 14, AF8)>; /* UART8_RTS */
+				<STM32_PINMUX('E', 14, AF8)>; /* UART8_RTS */
 			bias-disable;
 			drive-push-pull;
 			slew-rate = <0>;
@@ -393,7 +393,7 @@
 	uart8_sleep_pins_a: uart8-sleep-0 {
 		pins {
 			pinmux = <STM32_PINMUX('E', 8, ANALOG)>, /* UART8_TX */
-			    <STM32_PINMUX('F', 10, ANALOG)>, /* UART8_RTS */
+				<STM32_PINMUX('F', 10, ANALOG)>, /* UART8_RTS */
 				<STM32_PINMUX('E', 10, ANALOG)>; /* UART8_RX */
 		};
 	};
